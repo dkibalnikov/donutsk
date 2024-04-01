@@ -23,7 +23,7 @@ geom_pin_line(
   na.rm = FALSE,
   show.legend = NA,
   inherit.aes = TRUE,
-  r = 1.75,
+  r = 1.5,
   cut = 0.1,
   layout = circle(),
   ...
@@ -37,7 +37,7 @@ geom_pin_head(
   na.rm = FALSE,
   show.legend = NA,
   inherit.aes = TRUE,
-  r = 1.75,
+  r = 1.5,
   cut = 0.1,
   layout = circle(),
   ...

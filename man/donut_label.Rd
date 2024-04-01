@@ -124,7 +124,7 @@ to the paired geom/stat.}
 \item{layout}{The layout function to effectively display text and labels}
 }
 \description{
-The set of annotation functions utilizes layout functions to effectively distribute labels within the available space.
+The set of annotation functions utilizes layout functions to effectively distribute labels within the available space
 Annotations are streamlined by leveraging pre-calculated special variables such as \code{.sum}, \code{.mean}, and \code{.n} (see Details).
 \itemize{
 \item The function \code{geom_label_int()} creates \code{geom_label}-like \strong{internal} donut layer as aggregation of passed values
@@ -134,8 +134,8 @@ Annotations are streamlined by leveraging pre-calculated special variables such 
 }
 }
 \details{
-The label functions supports \code{glue::glue()} for convenient label construction like \code{{fill}:{.sum}},
-where \code{fill} and \code{.sum} are internal and pre-calculated variables. You can still use \code{glue::glue()} or \code{paste()}
+The label functions supports \code{glue::glue()} for convenient label construction like \code{Total: {.sum}},
+where \code{.sum} is pre-calculated variable. You can still use \code{glue::glue()} or \code{paste()}
 functions to pass data.frame fields for label construction.
 
 In addition to generic aesthetics like \code{color}, \code{fill}, \code{alpha}, etc., the following list of pre-calculated variables

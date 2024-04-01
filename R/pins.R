@@ -80,7 +80,7 @@ StatPinLine <- ggproto("StatPinLine", Stat,
 #' @export
 geom_pin_line <- function(mapping = NULL, data = NULL, stat = "pin", position = "identity",
                          na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
-                         r=1.75, cut=.1, layout = circle(), ...){
+                         r=1.5, cut=.1, layout = circle(), ...){
   layer(
     data = data, mapping = mapping, stat = StatPinLine, geom = "segment", position = position,
     show.legend = show.legend, inherit.aes = inherit.aes,
@@ -113,7 +113,7 @@ StatPinHead <- ggproto("StatPinHead", Stat,
 #' @export
 geom_pin_head <- function(mapping = NULL, data = NULL, stat = "point", position = "identity",
                            na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
-                           r=1.75, cut=.1, layout = circle(), ...){
+                           r=1.5, cut=.1, layout = circle(), ...){
   layer(
     data = data, mapping = mapping, stat = StatPinHead, geom = "point", position = position,
     show.legend = show.legend, inherit.aes = inherit.aes,

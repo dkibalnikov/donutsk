@@ -12,6 +12,7 @@ The Donutsk package allows you to build donut/pie charts with ggplot2 layer by l
 Useful links:
 \itemize{
   \item \url{https://github.com/dkibalnikov/donutsk}
+  \item \url{https://dkibalnikov.github.io/donutsk/}
   \item Report bugs at \url{https://github.com/dkibalnikov/donutsk/issues}
 }
 
