@@ -4,7 +4,6 @@
 # donutsk <img src="man/figures/donutsk_logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
-
 [![R-CMD-check](https://github.com/dkibalnikov/donutsk/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dkibalnikov/donutsk/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
