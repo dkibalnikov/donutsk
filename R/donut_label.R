@@ -1,14 +1,14 @@
 #' Create pie or donut label and text annotations
 #'
-#' The set of annotation functions utilizes layout functions to effectively distribute labels within the available space.
+#' The set of annotation functions utilizes layout functions to effectively distribute labels within the available space
 #' Annotations are streamlined by leveraging pre-calculated special variables such as `.sum`, `.mean`, and `.n` (see Details).
 #' * The function `geom_label_int()` creates `geom_label`-like **internal** donut layer as aggregation of passed values
 #' * The function `geom_text_int()` creates `geom_text`-like **internal** donut layer as aggregation of passed values
 #' * The function `geom_label_ext()` creates `geom_label`-like **external** donut layer of passed values
 #' * The function `geom_text_ext()` creates `geom_text`-like **external** donut layer of passed values
 #'
-#' The label functions supports `glue::glue()` for convenient label construction like `{fill}:{.sum}`,
-#' where `fill` and `.sum` are internal and pre-calculated variables. You can still use `glue::glue()` or `paste()`
+#' The label functions supports `glue::glue()` for convenient label construction like `Total: {.sum}`,
+#' where `.sum` is pre-calculated variable. You can still use `glue::glue()` or `paste()`
 #' functions to pass data.frame fields for label construction.
 #'
 #' In addition to generic aesthetics like `color`, `fill`, `alpha`, etc., the following list of pre-calculated variables

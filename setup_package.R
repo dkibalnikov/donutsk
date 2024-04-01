@@ -43,6 +43,7 @@ use_github_action()
 usethis::use_coverage()
 create_github_token() # Create token to support GitHub Actions
 gitcreds::gitcreds_set() # Update token storage
+use_pkgdown_github_pages() # Add site
 
 # Sticker -------------------------------------------------------------------------------------------------------------------------------------------------
 library(hexSticker)

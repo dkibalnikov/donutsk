@@ -1,0 +1,5 @@
+url: https://dkibalnikov.github.io/donutsk/
+template:
+  bootstrap: 5
+  bootswatch: morph
+
