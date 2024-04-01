@@ -140,19 +140,21 @@ p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE)
 
 # Add labels to external donut as percent inside group
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
- geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+ geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
                 show.legend = FALSE, size=3, col="white") +
  geom_pin(size = 1, linewidth=.2, show.legend = FALSE, cut = .2)
 
 # Leverage tv() layout
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
- geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
-                show.legend = FALSE, size=3, col="white", layout = tv(thinner = TRUE)) +
- geom_pin(size = 1, linewidth=.2, show.legend = FALSE, cut = .2, layout = tv(thinner = TRUE))
+ geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+                show.legend = FALSE, size=3, col="white",
+                layout = tv(thinner = TRUE, thinner_gap = 0.15)) +
+ geom_pin(size = 1, linewidth=.2, show.legend = FALSE, cut = .2,
+ layout = tv(thinner = TRUE, thinner_gap = 0.15))
 
 # Leverage another layout
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
- geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+ geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
                 show.legend = FALSE, size=3, col="white", layout = eye()) +
  geom_pin(size = .5, linewidth=.1, show.legend = FALSE, layout = eye())
 

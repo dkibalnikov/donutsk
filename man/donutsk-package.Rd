@@ -6,6 +6,8 @@
 \alias{donutsk-package}
 \title{donutsk: Construct advanced donut charts}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 The Donutsk package allows you to build donut/pie charts with ggplot2 layer by layer, exploiting the advantages of polar symmetry.
 }
 \seealso{

@@ -64,18 +64,19 @@ NULL
 #'
 #' # Add labels to external donut as percent inside group
 #' p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
-#'  geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+#'  geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
 #'                 show.legend = FALSE, size=3, col="white")
 #'
 #' # Leverage ggplot2 feature for labels
 #' p + coord_radial(theta = "y", expand = FALSE, rotate_angle = TRUE) +
-#'  geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc)}")),
-#'                 show.legend = FALSE, size=3, col="white", angle=90, layout = circle(r=1.8))
+#'  geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc)}")),
+#'                 show.legend = FALSE, size=3, col="white", angle=90, layout = circle())
 #'
 #' # Leverage another layout
 #' p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
-#'  geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
-#'                 show.legend = FALSE, size=3, col="white", layout = tv(thinner = TRUE))
+#'  geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+#'                 show.legend = FALSE, size=3, col="white",
+#'                 layout = tv(thinner = TRUE, thinner_gap = 0.15))
 #'
 #' @rdname donut_label
 #' @usage NULL

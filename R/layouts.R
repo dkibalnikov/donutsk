@@ -46,13 +46,17 @@ NULL
 #' n <- 20
 #' theta <- 1:n/n
 #'
-#' dplyr::tibble(theta = theta, lbl = paste0("sample: ", sample(LETTERS, n, TRUE))) |>
+#' dplyr::tibble(
+#'   theta = theta,
+#'   lbl = paste0("sample: ", sample(LETTERS, n, TRUE))
+#'   ) |>
 #'  dplyr::bind_cols(lt = eye()(theta)) |>
-#'  ggplot() +
-#'  geom_point(aes(1, theta)) +
-#'  geom_point(aes(x=x, y = y)) +
+#'  ggplot(aes(x=x, y=y)) +
+#'  geom_point(aes(x=1, y=theta)) +
+#'  geom_point() +
 #'  geom_segment(aes(x=1, xend=x, y=theta, yend=y), linewidth=.2) +
-#'  geom_label(aes(x=x, y = y, label = lbl, hjust = dplyr::if_else(theta > 0.5, 1, 0)), nudge_x = .2) +
+#'  geom_label(aes(label=lbl, hjust=dplyr::if_else(theta > 0.5, 1, 0)),
+#'   nudge_x =.2) +
 #'  coord_polar(theta = "y") +
 #'  xlim(0, 5) +
 #'  ylim(0, 1)

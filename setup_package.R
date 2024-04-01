@@ -7,6 +7,8 @@ create_package(path = '~/Documents/donutsk/', fields = list( # GitHub first appr
 use_author(given = "Dmitry", family = "Kibalnikov", email = "d.kibalnikov@gmail.com", role = c("aut", "cre", "cph"))
 use_mit_license("Kibalnikov Dmitry") # MIT license --> DESCRIPTION
 use_github_links() # URL, BugReport --> DESCRIPTION
+use_readme_rmd() # R markdown for README
+use_logo("man/figures/logo.png")
 
 # Package dependencies -----------------------------------------------------------------------------------------------------------------------------------
 use_package("ggplot2", type = "Depends", min_version = "3.5.0")
@@ -38,7 +40,6 @@ use_test("packing")
 
 
 # Lifecycle preparation -----------------------------------------------------------------------------------------------------------------------------------
-use_readme_rmd() # R markdown for README
 create_github_token() # Create token to support GitHub Actions
 gitcreds::gitcreds_set() # Update token storage
 use_pkgdown_github_pages() # Add site
@@ -51,6 +52,7 @@ use_cran_comments()
 use_coverage() # reports test coverage
 use_version()
 build_readme() # Rebuild R markdown for README
+build_site()
 
 # Sticker -------------------------------------------------------------------------------------------------------------------------------------------------
 library(hexSticker)

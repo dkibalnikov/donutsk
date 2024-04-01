@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# donutsk <img src="man/figures/donutsk_logo.png" align="right" height="138" /></a>
+# donutsk <a href="https://dkibalnikov.github.io/donutsk/"><img src="man/figures/logo.png" align="right" height="139" alt="donutsk website" /></a>
 
 <!-- badges: start -->
 
