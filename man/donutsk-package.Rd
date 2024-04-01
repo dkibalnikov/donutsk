@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Dmitry Kibalnikov \email{d.kibalnikov@gmail.com}
+\strong{Maintainer}: Dmitry Kibalnikov \email{d.kibalnikov@gmail.com} [copyright holder]
 
 }
 \keyword{internal}

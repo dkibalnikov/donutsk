@@ -4,7 +4,7 @@ create_package(path = '~/Documents/donutsk/', fields = list( # GitHub first appr
   Package = "donutsk",
   Title = "Construct advanced donut charts",
   Description = "The Donutsk package allows you to build donut/pie charts with ggplot2 layer by layer, exploiting the advantages of polar symmetry."))
-use_author(given = "Dmitry", family = "Kibalnikov", email = "d.kibalnikov@gmail.com", role = c("aut", "cre"))
+use_author(given = "Dmitry", family = "Kibalnikov", email = "d.kibalnikov@gmail.com", role = c("aut", "cre", "cph"))
 use_mit_license("Kibalnikov Dmitry") # MIT license --> DESCRIPTION
 use_github_links() # URL, BugReport --> DESCRIPTION
 
@@ -36,14 +36,21 @@ use_r("pins")
 usethis::use_testthat()
 use_test("packing")
 
-# Lifecycle -----------------------------------------------------------------------------------------------------------------------------------------------
+
+# Lifecycle preparation -----------------------------------------------------------------------------------------------------------------------------------
 use_readme_rmd() # R markdown for README
-build_readme() # Rebuild R markdown for README
-use_github_action()
-usethis::use_coverage()
 create_github_token() # Create token to support GitHub Actions
 gitcreds::gitcreds_set() # Update token storage
 use_pkgdown_github_pages() # Add site
+use_github_action("check-standard") # Add badge R CMD check status
+use_github_action("test-coverage")
+use_news_md() # Add news
+use_cran_comments()
+
+# Lifecycle -----------------------------------------------------------------------------------------------------------------------------------------------
+use_coverage() # reports test coverage
+use_version()
+build_readme() # Rebuild R markdown for README
 
 # Sticker -------------------------------------------------------------------------------------------------------------------------------------------------
 library(hexSticker)

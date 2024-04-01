@@ -11,8 +11,11 @@ coverage](https://codecov.io/gh/dkibalnikov/donutsk/branch/main/graph/badge.svg)
 <!-- badges: end -->
 
 The Donutsk package allows you to build donut/pie charts with ggplot2
-layer by layer, exploiting the advantages of polar symmetry. The
-following features are worth to be highlighted:
+layer by layer, exploiting the advantages of polar symmetry. The package
+is designed to address the limitations of pie charts, which are
+well-known, while also capitalizing on their ability to effectively
+represent hierarchical data structures. The following features are worth
+to be highlighted:
 
 - Create pie or donut charts while retaining ggplot flexibility, such as
   leveraging faceting and palettes, and fine-tuning appearance
@@ -66,7 +69,7 @@ dplyr::group_by(df, lvl1, lvl2, highlight_ext, highlight_int) |>
   geom_label_int(aes(label = "Sum {fill}:\n{.sum} ({scales::percent(.prc)})"),
                  alpha = .6, col = "white", r=1.2) +
   geom_donut_ext(aes(alpha = ordered(lvl2), highlight = highlight_ext)) +
-  geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+  geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
                  show.legend = FALSE, col="white", 
                  layout = tv(thinner = TRUE)) +
   geom_pin(size=.5, linewidth=.1, show.legend = FALSE, cut = .25,
@@ -106,4 +109,6 @@ The following list of ideas is considered as a kind of roadmap:
     the hood.
 2.  Expand the list of layouts with more sophisticated algorithms
 3.  Integrate pattern aesthetics with
-    [ggpattern](https://coolbutuseless.github.io/package/ggpattern/index.html).
+    [ggpattern](https://coolbutuseless.github.io/package/ggpattern/index.html)
+4.  Calculate the precise square value for highlighted segments to
+    adjust size
