@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+# <img src="man/figures/donutsk_logo.png" align="right" height="138" /></a>
+
 # donutsk
 
 <!-- badges: start -->
@@ -34,10 +36,10 @@ devtools::install_github("dkibalnikov/donutsk")
 
 Basic example:
 
-```{r pressure, echo = FALSE}
+```{r eye layout, echo = FALSE, fig.height=8, fig.width=8}
 library(donutsk)
 
-# Creat an example data set
+# Create an example data set
 n <- 40
 set.seed(2021)
 df <- dplyr::tibble(
@@ -58,7 +60,8 @@ p <- dplyr::group_by(df, lvl1, lvl2, highlight_ext, highlight_int) |>
  geom_donut_ext(aes(alpha = ordered(lvl2), highlight = highlight_ext)) +
  scale_fill_viridis_d(option = "inferno", begin = .1, end = .7) +
  guides(alpha = guide_legend(ncol = 2), fill = guide_legend(ncol = 2)) +
- theme_void()
+ theme_void() + 
+ theme(legend.position = "none")  
 
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
  geom_label_ext(aes(col = lvl1, label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),

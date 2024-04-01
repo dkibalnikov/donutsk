@@ -18,7 +18,7 @@
 NULL
 #> NULL
 #' @examples
-#' # Creat an example data set
+#' # Create an example data set
 #' n <- 40
 #' set.seed(2021)
 #' df <- dplyr::tibble(
