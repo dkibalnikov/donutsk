@@ -40,6 +40,7 @@ use_test("packing")
 use_readme_rmd() # R markdown for README
 build_readme() # Rebuild R markdown for README
 use_github_action()
+usethis::use_coverage()
 create_github_token() # Create token to support GitHub Actions
 gitcreds::gitcreds_set() # Update token storage
 

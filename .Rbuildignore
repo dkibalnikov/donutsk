@@ -4,3 +4,4 @@
 ^setup_package\.R$
 ^README\.Rmd$
 ^\.github$
+^codecov\.yml$

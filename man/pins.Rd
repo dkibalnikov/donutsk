@@ -113,7 +113,7 @@ The set of functions served to connect text or labels with donut segments
 }
 }
 \examples{
-# Creat an example data set
+# Create an example data set
 n <- 40
 set.seed(2021)
 df <- dplyr::tibble(
