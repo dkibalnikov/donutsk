@@ -1,3 +1,5 @@
 ^donutsk\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
+^setup_package\.R$
+^README\.Rmd$

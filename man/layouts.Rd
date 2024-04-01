@@ -5,6 +5,7 @@
 \alias{tv}
 \alias{petal}
 \alias{circle}
+\alias{eye}
 \title{The set of layout functions is designed to effectively display text and labels}
 \usage{
 tv(
@@ -19,13 +20,15 @@ tv(
 petal(
   rotate = 0,
   n = 4,
-  scale = 1.5,
+  scale = 2.5,
   bend = 0.3,
   thinner = FALSE,
   thinner_gap = 0.1
 )
 
-circle(r = 2.25, thinner = FALSE, thinner_gap = 0.1)
+circle(r = 2.5, thinner = FALSE, thinner_gap = 0.1)
+
+eye(scale_x = 2, bend_x = 1, alpha = 90, clove = 0.5)
 }
 \arguments{
 \item{scale_x}{Scales the layout in horizontal perspective}
@@ -49,6 +52,13 @@ circle(r = 2.25, thinner = FALSE, thinner_gap = 0.1)
 \item{bend}{Manages the bending level}
 
 \item{r}{Sets the radius of the layout circle}
+
+\item{alpha}{Defines the angle of distribution in horizontal perspective.
+Pick up value from degree interval (0, 180)}
+
+\item{clove}{Determines the distribution proportion between the left and right-hand parts.
+Default value is 0.5. There ahould be numeric value from interval (0, 1)
+e.g. 0.4 denotes 40\% cases on the right hand and 60\% cases on the left hand}
 }
 \value{
 Layout functions return layout function i.e. a function that takes a vector of angles and returns a numeric
@@ -62,6 +72,7 @@ The layout functions help to streamline displaying text and labels \emph{geoms} 
 \item \code{tv()} - The function builds layout resembled an old-fashioned TV screen
 \item \code{petal()} - The function builds layout resembled flower with petals
 \item \code{circle()} - The function builds circle layout
+\item \code{eye()} - The function builds two-sided layout
 }
 }
 \examples{
@@ -81,6 +92,21 @@ list(petal_2n = petal(n = 2),
   geom_point(alpha = .3) +
   coord_polar(theta = "y") +
   xlim(0, 3.5)
+
+# The eye() layout generates table as an output
+n <- 20
+theta <- 1:n/n
+
+dplyr::tibble(theta = theta, lbl = paste0("sample: ", sample(LETTERS, n, TRUE))) |>
+ dplyr::bind_cols(lt = eye()(theta)) |>
+ ggplot() +
+ geom_point(aes(1, theta)) +
+ geom_point(aes(x=x, y = y)) +
+ geom_segment(aes(x=1, xend=x, y=theta, yend=y), linewidth=.2) +
+ geom_label(aes(x=x, y = y, label = lbl, hjust = dplyr::if_else(theta > 0.5, 1, 0)), nudge_x = .2) +
+ coord_polar(theta = "y") +
+ xlim(0, 5) +
+ ylim(0, 1)
 
 }
 \seealso{

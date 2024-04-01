@@ -18,7 +18,10 @@ calc_aggr <- function(df, val, lvl, r_int=0, r_ext=1){
   lvl <- enquo(lvl)
   val <- enquo(val)
 
-  group_by(df, !!lvl, pick(any_of(c("label", "PANEL", "group", "highlight", "fill", "alpha")))) |>
+  all_aes <- c("label", "PANEL", "group", "highlight", "fill", "alpha", "linetype",
+               "linewidth", "angle", "colour", "hjust", "vjust", "size")
+
+  group_by(df, !!lvl, pick(any_of(all_aes))) |>
     mutate(.sum = sum(!!val),
            .mean = mean(!!val),
            .median = stats::median(!!val),

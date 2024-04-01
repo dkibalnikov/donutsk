@@ -5,6 +5,7 @@
 #' * `tv()` - The function builds layout resembled an old-fashioned TV screen
 #' * `petal()` - The function builds layout resembled flower with petals
 #' * `circle()` - The function builds circle layout
+#' * `eye()` - The function builds two-sided layout
 #'
 #' @param scale_x Scales the layout in horizontal perspective
 #' @param scale_y Scales the layout in vertical perspective
@@ -41,6 +42,21 @@ NULL
 #'   coord_polar(theta = "y") +
 #'   xlim(0, 3.5)
 #'
+#' # The eye() layout generates table as an output
+#' n <- 20
+#' theta <- 1:n/n
+#'
+#' dplyr::tibble(theta = theta, lbl = paste0("sample: ", sample(LETTERS, n, TRUE))) |>
+#'  dplyr::bind_cols(lt = eye()(theta)) |>
+#'  ggplot() +
+#'  geom_point(aes(1, theta)) +
+#'  geom_point(aes(x=x, y = y)) +
+#'  geom_segment(aes(x=1, xend=x, y=theta, yend=y), linewidth=.2) +
+#'  geom_label(aes(x=x, y = y, label = lbl, hjust = dplyr::if_else(theta > 0.5, 1, 0)), nudge_x = .2) +
+#'  coord_polar(theta = "y") +
+#'  xlim(0, 5) +
+#'  ylim(0, 1)
+#'
 #' @seealso Utilized in the following functions: [geom_label_ext], [geom_text_ext], [geom_pin]
 #'
 #' @rdname layouts
@@ -73,7 +89,7 @@ tv <- function(scale_x = 1.5, scale_y = 1.5, bend_x = 1, bend_y = 1,  thinner = 
 #'
 #' @rdname layouts
 #' @export
-petal <- function(rotate = 0, n = 4, scale = 1.5, bend=.3, thinner = FALSE, thinner_gap = .1){
+petal <- function(rotate = 0, n = 4, scale = 2.5, bend=.3, thinner = FALSE, thinner_gap = .1){
   force(rotate)
   force(n)
   force(bend)
@@ -93,10 +109,38 @@ petal <- function(rotate = 0, n = 4, scale = 1.5, bend=.3, thinner = FALSE, thin
 #'
 #' @rdname layouts
 #' @export
-circle <- function(r=2.25, thinner = FALSE, thinner_gap = .1){
+circle <- function(r=2.5, thinner = FALSE, thinner_gap = .1){
   function(theta){
     if(thinner){
       r + c(rep(c(-thinner_gap, thinner_gap), length(theta)%/%2), thinner_gap)[seq_along(theta)]
-    }else r
+    }else rep(r, length(theta))
+  }
+}
+#'
+#' @param alpha Defines the angle of distribution in horizontal perspective.
+#' Pick up value from degree interval (0, 180)
+#' @param clove Determines the distribution proportion between the left and right-hand parts.
+#' Default value is 0.5. There ahould be numeric value from interval (0, 1)
+#' e.g. 0.4 denotes 40% cases on the right hand and 60% cases on the left hand
+#'
+#' @rdname layouts
+#' @export
+eye <- function(scale_x = 2, bend_x = 1, alpha = 90, clove = .5){
+  force(scale_x)
+  force(bend_x)
+  force(alpha)
+  force(clove)
+  clove <<- clove # push to parent env to reuse for hjust alignment in donut_label
+
+  function(theta){
+    n_right <- length(theta[theta <= clove])
+    n_left <- length(theta[theta > clove])
+
+    theta_right <- seq(from = 0.25 - alpha/180/2/2, to=0.25 + alpha/180/2/2, length.out = n_right)
+    theta_left <- seq(from = 0.75 - alpha/180/2/2, to=0.75 + alpha/180/2/2, length.out = n_left)
+    y <- c(theta_right, theta_left)
+
+    tibble(x = bend_x + scale_x*sqrt((tan(2*pi*y+pi/2))^2+1),
+           y)
   }
 }
