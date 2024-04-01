@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# <img src="man/figures/donutsk_logo.png" align="right" height="138" /></a>
-
-# donutsk
+# donutsk <img src="man/figures/donutsk_logo.png" align="right" height="138" /></a>
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/dkibalnikov/donutsk/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/dkibalnikov/donutsk/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The Donutsk package allows you to build donut/pie charts with ggplot2
