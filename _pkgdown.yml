@@ -4,4 +4,5 @@ template:
   bootswatch: pulse
   bslib:
     pkgdown-nav-height: 100px
+    primary: "#33264D"
 
