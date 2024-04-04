@@ -97,10 +97,7 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \item{layout}{The layout function to effectively display text and labels.
 Obviously it's better to have the same as for \code{geom_label_ext} or \code{geom_text_ext}}
 
-\item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
-often aesthetics, used to set an aesthetic to a fixed value, like
-\code{colour = "red"} or \code{size = 3}. They may also be parameters
-to the paired geom/stat.}
+\item{...}{Parameters to be passed to \code{geom_pin_line()} and \code{geom_pin_head()}}
 
 \item{head}{Boolean - defines whether to add pin head}
 }
@@ -109,54 +106,54 @@ The set of functions served to connect text or labels with donut segments
 \itemize{
 \item \code{geom_pin_line()} - builds curved line to linl label with donut segment
 \item \code{geom_pin_head()} - builds stylish point heads for pins
-\item \code{geom_pin} - handy wrapper for \code{geom_pin_line()} and \code{geom_pin_head()}
+\item \code{geom_pin()} - handy wrapper for \code{geom_pin_line()} and \code{geom_pin_head()}
 }
 }
 \examples{
-# Create an example data set
-n <- 40
+n <- 30
 set.seed(2021)
 df <- dplyr::tibble(
- lvl1 = sample(LETTERS[1:5], n, TRUE),
- lvl2 = sample(LETTERS[6:24], n, TRUE),
- value = sample(1:20, n, TRUE),
- highlight_ext = sample(c(FALSE,TRUE), n, TRUE, c(.9, .1))) |>
- dplyr::mutate(highlight_int = dplyr::if_else(lvl1 == "A", TRUE, FALSE))
+  lvl1 = sample(LETTERS[1:5], n, TRUE),
+  lvl2 = sample(LETTERS[6:24], n, TRUE),
+  value = sample(1:20, n, TRUE),
+  highlight_ext = sample(c(FALSE,TRUE), n, TRUE, c(.9, .1))) |>
+  dplyr::mutate(highlight_int = dplyr::if_else(lvl1 == "A", TRUE, FALSE))
 
 # Starting plot with doubled donuts and annotations for internal one
 p <- dplyr::group_by(df, lvl1, lvl2, highlight_ext, highlight_int) |>
- dplyr::summarise(value = sum(value), .groups = "drop") |>
- packing(value, lvl1) |>
- ggplot(aes(value = value, fill = lvl1)) +
- geom_donut_int(aes(highlight = highlight_int), alpha=.5, r_int = .25) +
- geom_label_int(aes(label = "Sum {fill}:\n{.sum} ({scales::percent(.prc)})"),
-  alpha = .6, col = "white", size = 3, r=1.2) +
- geom_donut_ext(aes(alpha = ordered(lvl2), highlight = highlight_ext)) +
- scale_fill_viridis_d(option = "inferno", begin = .1, end = .7) +
- guides(alpha = guide_legend(ncol = 2), fill = guide_legend(ncol = 2)) +
- theme_void()
+  dplyr::summarise(value = sum(value), .groups = "drop") |>
+  packing(value, lvl1) |>
+  ggplot(aes(value = value, fill = lvl1)) +
+  geom_donut_int(aes(highlight = highlight_int), alpha=.5, r_int = .25) +
+  geom_label_int(aes(label = "Sum {fill}:\n{.sum}-{scales::percent(.prc)}"),
+                 alpha = .6, col = "white", size = 3, r=1.2) +
+  geom_donut_ext(aes(opacity = lvl2, highlight = highlight_ext)) +
+  scale_fill_viridis_d(option = "inferno", begin = .1, end = .7) +
+  guides(alpha = guide_legend(ncol = 2), fill = guide_legend(ncol = 2)) +
+  theme_void() +
+  theme(legend.position = "none")
 
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE)
 
 # Add labels to external donut as percent inside group
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
- geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
-                show.legend = FALSE, size=3, col="white") +
- geom_pin(size = 1, linewidth=.2, show.legend = FALSE, cut = .2)
+  geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+                 show.legend = FALSE, size=3, col="white") +
+  geom_pin(size = .5, linewidth=.1, show.legend = FALSE, cut = .2)
 
 # Leverage tv() layout
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
- geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
-                show.legend = FALSE, size=3, col="white",
-                layout = tv(thinner = TRUE, thinner_gap = 0.15)) +
- geom_pin(size = 1, linewidth=.2, show.legend = FALSE, cut = .2,
- layout = tv(thinner = TRUE, thinner_gap = 0.15))
+  geom_label_ext(aes(label = paste0(lvl2, ":{scales::percent(.prc_grp)}")),
+                 show.legend = FALSE, size=3, col="white",
+                 layout = tv(thinner = TRUE, thinner_gap = .15)) +
+  geom_pin(size = .5, linewidth=.1, show.legend = FALSE, cut = .2,
+           layout = tv(thinner = TRUE, thinner_gap = .15))
 
 # Leverage another layout
 p + coord_radial(theta = "y", expand = FALSE, rotate_angle = FALSE) +
- geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
-                show.legend = FALSE, size=3, col="white", layout = eye()) +
- geom_pin(size = .5, linewidth=.1, show.legend = FALSE, layout = eye())
+  geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
+                 show.legend = FALSE, size=3, col="white", layout = eye()) +
+  geom_pin(size = .5, linewidth=.1, show.legend = FALSE, layout = eye())
 
 }
 \seealso{

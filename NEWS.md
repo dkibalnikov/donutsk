@@ -1,6 +1,8 @@
 # donutsk (development version)
 
-* Initial CRAN submission.
+* Initial CRAN submission
+* GDP Real Life Example published
+* Add `opacity` as addition to `alpha` aesthetic for `geom_donut_ext`
 
 # donutsk 0.1.0 
 

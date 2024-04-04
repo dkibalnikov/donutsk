@@ -68,7 +68,7 @@ dplyr::group_by(df, lvl1, lvl2, highlight_ext, highlight_int) |>
   geom_donut_int(aes(highlight = highlight_int), alpha=.5, r_int = .25) +
   geom_label_int(aes(label = "Sum {fill}:\n{.sum} ({scales::percent(.prc)})"),
                  alpha = .6, col = "white", r=1.2) +
-  geom_donut_ext(aes(alpha = ordered(lvl2), highlight = highlight_ext)) +
+  geom_donut_ext(aes(opacity = lvl2, highlight = highlight_ext)) +
   geom_label_ext(aes(label = paste0(lvl2, ": {scales::percent(.prc_grp)}")),
                  show.legend = FALSE, col="white", 
                  layout = tv(thinner = TRUE)) +

@@ -16,6 +16,8 @@ use_package("dplyr", type = "Imports", min_version = "1.1.2")
 use_package("rlang", type = "Imports", min_version = "1.1.1")
 use_package("glue", type = "Imports", min_version = "1.6.2")
 use_package("scales", type = "Suggests", min_version = "1.3.0")
+use_package("stringr", type = "Suggests", min_version = "1.5.0")
+use_package("tidyr", type = "Suggests", min_version = "1.3.0")
 
 # Functions required --------------------------------------------------------------------------------------------------------------------------------------
 use_package_doc() # setup separate document for importing functions
@@ -30,14 +32,13 @@ use_import_from("glue", "glue")
 use_r("packing")
 use_r("utils")
 use_r("layouts")
-use_r("geom_donut")
+use_r("donut_geom")
 use_r("donut_label")
 use_r("pins")
 
 # Testing -------------------------------------------------------------------------------------------------------------------------------------------------
 usethis::use_testthat()
 use_test("packing")
-
 
 # Lifecycle preparation -----------------------------------------------------------------------------------------------------------------------------------
 create_github_token() # Create token to support GitHub Actions
@@ -53,6 +54,12 @@ use_coverage() # reports test coverage
 use_version()
 build_readme() # Rebuild R markdown for README
 build_site()
+
+# Documentation -------------------------------------------------------------------------------------------------------------------------------------------
+document()
+use_data_raw("GDP_data")
+use_vignette("real_life_example", title = "Real life example")
+
 
 # Sticker -------------------------------------------------------------------------------------------------------------------------------------------------
 library(hexSticker)

@@ -4,6 +4,9 @@
 #' * The function `geom_donut_int()` creates visually **internal** donut layer as aggregation of passed values
 #' * The function `geom_donut_ext()` creates visually **external** donut layer of passed values
 #'
+#' There are two additional aesthetics possible to use:
+#'  * `highlight` - optional aesthetic which expects logical (TRUE/FALSE) variable in order to highlight particular donut segments
+#'  * `opacity` - operates pretty much the same as `alpha` but ensure more contrast colors and removes legend. Once `alpha` is set `opacity` does not affect a chart
 #'
 #' @inheritParams ggplot2::geom_rect
 #' @param r_int Internal donut radius
@@ -11,7 +14,7 @@
 #' @param hl_shift Sets the spacing to show highlighted segments
 #' @param hl_col Sets the color for highlighted segments. When the `colour` parameter is specified, it overrides the hl_col parameter for highlighting segments.
 #'
-#' @name geom_donut
+#' @name donut_geom
 NULL
 #> NULL
 #'
@@ -55,7 +58,7 @@ NULL
 #' .id = "prep_type") |>
 #'  ggplot(aes(value = value, fill=lvl1)) +
 #'  geom_donut_int(aes(highlight=highlight_int), alpha=.6) +
-#'  geom_donut_ext(aes(alpha=ordered(lvl2), highlight=highlight_int)) +
+#'  geom_donut_ext(aes(opacity=lvl2, highlight=highlight_int)) +
 #'  # apply facets
 #'  facet_grid(~prep_type) +
 #'  # style chart with palette and theme
@@ -64,7 +67,7 @@ NULL
 #'  coord_polar(theta = "y") +
 #'  xlim(0, 2.5)
 #'
-#' @rdname geom_donut
+#' @rdname donut_geom
 #' @export
 geom_donut_int <- function(mapping = NULL, data = NULL, stat = "donut_int", position = "identity",
                            na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
@@ -76,7 +79,7 @@ geom_donut_int <- function(mapping = NULL, data = NULL, stat = "donut_int", posi
   )
 }
 #'
-#' @rdname geom_donut
+#' @rdname donut_geom
 #' @export
 geom_donut_ext <- function(mapping = NULL, data = NULL, stat = "donut_ext", position = "identity",
                            na.rm = FALSE, show.legend = NA, inherit.aes = TRUE,
@@ -88,7 +91,8 @@ geom_donut_ext <- function(mapping = NULL, data = NULL, stat = "donut_ext", posi
   )
 }
 #'
-#' @rdname geom_donut
+#' @rdname donut_geom
+#' @usage NULL
 #' @export
 StatDonutInt <- ggproto("StatDonutInt", Stat,
                         compute_panel = function(data, scales, r_int, r_ext, hl_shift, hl_col, colour=NA){
@@ -102,22 +106,22 @@ StatDonutInt <- ggproto("StatDonutInt", Stat,
                         optional_aes = "highlight"
 )
 #'
-#' @rdname geom_donut
+#' @rdname donut_geom
+#' @usage NULL
 #' @export
 StatDonutExt <- ggproto("StatDonutExt", Stat,
-                        compute_panel = function(data, scales, r_int=1.5, r_ext=2, hl_shift=.1, hl_col="firebrick", colour = NA){
+                        compute_panel = function(data, scales, r_int, r_ext, hl_shift, hl_col, colour=NA){
                           if(!"highlight" %in% names(data)){data$highlight <- FALSE}
-                          calc_coords(data, value, r_int=r_int, r_ext=r_ext) |>
+                          df1 <- calc_coords(data, value, r_int=r_int, r_ext=r_ext) |>
                             mutate(xmin=if_else(highlight, r_int + hl_shift, r_int),
                                    xmax=if_else(highlight, r_ext + hl_shift, r_ext),
                                    colour=if_else(highlight, hl_col, colour))
+
+                          if("alpha"%in% names(data)) df1
+                          else group_by(df1, fill) |>
+                              mutate(alpha = dplyr::cume_dist(opacity))
                         },
                         required_aes = c("value", "fill"),
-                        optional_aes = c("highlight", "alpha")
+                        optional_aes = c("highlight", "opacity")
 )
-
-
-
-
-
 
