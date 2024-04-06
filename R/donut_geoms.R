@@ -124,4 +124,3 @@ StatDonutExt <- ggproto("StatDonutExt", Stat,
                         required_aes = c("value", "fill"),
                         optional_aes = c("highlight", "opacity")
 )
-
