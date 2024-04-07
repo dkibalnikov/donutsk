@@ -1,9 +1,9 @@
 Package: donutsk
 Title: Construct advanced donut charts
-Version: 0.0.1.9000
+Version: 0.1.0
 Authors@R: 
     person("Dmitry", "Kibalnikov", , "d.kibalnikov@gmail.com", role = c("aut", "cre", "cph"))
-Description: The Donutsk package allows you to build donut/pie charts with ggplot2 layer by layer, exploiting the advantages of polar symmetry.
+Description: Build donut/pie charts with 'ggplot2' layer by layer, exploiting the advantages of polar symmetry. Leverage layouts to distribute labels effectively. Connect labels to donut segments using pins. Streamline annotation and highlighting.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

@@ -1,4 +1,4 @@
-# donutsk (development version)
+# donutsk 0.1.0
 
 * Initial CRAN submission
 * GDP Real Life Example published
