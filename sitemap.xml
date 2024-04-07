@@ -10,6 +10,12 @@
     <loc>https://dkibalnikov.github.io/donutsk/LICENSE.html</loc>
   </url>
   <url>
+    <loc>https://dkibalnikov.github.io/donutsk/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://dkibalnikov.github.io/donutsk/articles/real_life_example.html</loc>
+  </url>
+  <url>
     <loc>https://dkibalnikov.github.io/donutsk/authors.html</loc>
   </url>
   <url>
@@ -19,13 +25,16 @@
     <loc>https://dkibalnikov.github.io/donutsk/news/index.html</loc>
   </url>
   <url>
+    <loc>https://dkibalnikov.github.io/donutsk/reference/GDP.html</loc>
+  </url>
+  <url>
+    <loc>https://dkibalnikov.github.io/donutsk/reference/donut_geom.html</loc>
+  </url>
+  <url>
     <loc>https://dkibalnikov.github.io/donutsk/reference/donut_label.html</loc>
   </url>
   <url>
     <loc>https://dkibalnikov.github.io/donutsk/reference/donutsk-package.html</loc>
-  </url>
-  <url>
-    <loc>https://dkibalnikov.github.io/donutsk/reference/geom_donut.html</loc>
   </url>
   <url>
     <loc>https://dkibalnikov.github.io/donutsk/reference/index.html</loc>
