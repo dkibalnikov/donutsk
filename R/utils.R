@@ -1,11 +1,9 @@
 # Calculates coordinates for polar system
-calc_coords <- function(df, val, r_int=NULL, r_ext=NULL){
+calc_coords <- function(df, val){
   ymin <- ymax <- NULL
   val <- enquo(val)
 
   mutate(df,
-         xmin = r_int,
-         xmax = r_ext,
          ymax = (!!val/sum(!!val)) |> cumsum(),
          ymin = lag(ymax, 1, 0),
          y = (ymin + ymax)/2)
@@ -30,5 +28,5 @@ calc_aggr <- function(df, val, lvl, r_int=0, r_ext=1){
     ungroup() |>
     distinct() |>
     mutate(.prc = .sum/sum(.sum)) |>
-    calc_coords(.sum, r_int, r_ext)
+    calc_coords(.sum)
 }

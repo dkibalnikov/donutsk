@@ -3,6 +3,7 @@
 * Initial CRAN submission
 * GDP Real Life Example published
 * Add `opacity` as addition to `alpha` aesthetic for `geom_donut_ext`
+* Adjust `hl_col` parameter behavior complementary to generic `colour`
 
 # donutsk 0.1.0 
 

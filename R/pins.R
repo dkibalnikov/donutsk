@@ -69,12 +69,12 @@ NULL
 #' @export
 StatPinLine <- ggproto("StatPinLine", Stat,
                       compute_panel = function(data, scales, layout, r, cut, size){ # size is dummy parameter
-                        df <- calc_coords(data, value, r_int=r, r_ext=NULL) # populate NULL value to useless pars
+                        df <- calc_coords(data, value) # populate NULL value to useless pars
                         lt <- layout(df$y)
 
                         (if(is.data.frame(lt)) mutate(df, xend = lt$x, yend = lt$y)
                           else mutate(df, xend = lt, yend = y)) |>
-                          mutate(x=xmin+cut, xend=xend-cut, xend = if_else(xend-x<cut, x, xend))
+                          mutate(x=r+cut, xend=xend-cut, xend = if_else(xend-x<cut, x, xend))
                       },
                       required_aes = "value"
 )
@@ -96,12 +96,12 @@ geom_pin_line <- function(mapping = NULL, data = NULL, stat = "pin", position = 
 #' @export
 StatPinHead <- ggproto("StatPinHead", Stat,
                         compute_panel = function(data, scales, layout, r, cut, linewidth){ # dummy linewidth parameter for combining two stats
-                          df1 <- calc_coords(data, value, r_int=r, r_ext=NULL) # populate NULL value to useless pars
+                          df1 <- calc_coords(data, value) # populate NULL value to useless pars
                           lt <- layout(df1$y)
 
                           df2 <- (if(is.data.frame(lt)) mutate(df1, xend = lt$x, yend = lt$y)
                             else mutate(df1, xend = lt, yend = y)) |>
-                            mutate(x=xmin+cut, xend=xend-cut, xend = ifelse(xend-x<cut, NA, xend)) |>
+                            mutate(x=r+cut, xend=xend-cut, xend = ifelse(xend-x<cut, NA, xend)) |>
                             filter(!is.na(xend))
 
                           # Define points coordinates as start/finish line

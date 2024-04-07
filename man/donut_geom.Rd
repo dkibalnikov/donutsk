@@ -3,18 +3,28 @@
 \docType{data}
 \name{donut_geom}
 \alias{donut_geom}
-\alias{geom_donut_int}
-\alias{geom_donut_ext}
 \alias{StatDonutInt}
+\alias{geom_donut_int0}
+\alias{StatDonutIntHl}
+\alias{geom_donut_int_hl}
+\alias{geom_donut_int}
 \alias{StatDonutExt}
+\alias{geom_donut_ext0}
+\alias{StatDonutExtHl}
+\alias{geom_donut_ext_hl}
+\alias{geom_donut_ext}
 \title{Create pie or donut chart}
 \format{
 An object of class \code{StatDonutInt} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.
 
+An object of class \code{StatDonutIntHl} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.
+
 An object of class \code{StatDonutExt} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.
+
+An object of class \code{StatDonutExtHl} (inherits from \code{Stat}, \code{ggproto}, \code{gg}) of length 4.
 }
 \usage{
-geom_donut_int(
+geom_donut_int0(
   mapping = NULL,
   data = NULL,
   stat = "donut_int",
@@ -25,11 +35,12 @@ geom_donut_int(
   r_int = 0,
   r_ext = 1,
   hl_shift = 0.1,
-  hl_col = "firebrick",
   ...
 )
 
-geom_donut_ext(
+geom_donut_int(..., hl_col = "firebrick")
+
+geom_donut_ext0(
   mapping = NULL,
   data = NULL,
   stat = "donut_ext",
@@ -40,9 +51,10 @@ geom_donut_ext(
   r_int = 1.5,
   r_ext = 2,
   hl_shift = 0.1,
-  hl_col = "firebrick",
   ...
 )
+
+geom_donut_ext(..., hl_col = "firebrick")
 }
 \arguments{
 \item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{aes()}}. If specified and
@@ -95,18 +107,19 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 
 \item{hl_shift}{Sets the spacing to show highlighted segments}
 
-\item{hl_col}{Sets the color for highlighted segments. When the \code{colour} parameter is specified, it overrides the hl_col parameter for highlighting segments.}
-
 \item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
 \code{colour = "red"} or \code{size = 3}. They may also be parameters
 to the paired geom/stat.}
+
+\item{hl_col}{Sets the color for highlighted segments. It's possible to use both simultaneously \code{hl_col} and generic \code{colour}}
 }
 \description{
 Create pie or donut charts while retaining ggplot flexibility, such as leveraging faceting and palettes, and fine-tuning appearance
 \itemize{
 \item The function \code{geom_donut_int()} creates visually \strong{internal} donut layer as aggregation of passed values
 \item The function \code{geom_donut_ext()} creates visually \strong{external} donut layer of passed values
+\item \code{geom_donut_int0()} and \code{geom_donut_ext()} are generic geoms not supporting highlight feature
 }
 }
 \details{

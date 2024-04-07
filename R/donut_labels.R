@@ -134,7 +134,7 @@ geom_text_int <- function(mapping = NULL, data = NULL, stat = "text_int", positi
 #' @export
 StatLabelExt <- ggproto("StatLabelExt", Stat,
                         compute_panel = function(data, scales, layout){
-                          df <- calc_coords(data, value, r_int=NULL, r_ext=NULL) # populate NULL value to useless pars
+                          df <- calc_coords(data, value) # populate NULL value to useless pars
                           lt <- layout(df$y)
 
                           (if(is.data.frame(lt)) mutate(df, x = lt$x, y = lt$y, hjust = if_else(y>clove, 1, 0))
@@ -165,7 +165,7 @@ geom_label_ext <- function(mapping = NULL, data = NULL, stat = "label_ext", posi
 #' @export
 StatTextExt <- ggproto("StatTextExt", Stat,
                        compute_panel = function(data, scales, layout){
-                         df <- calc_coords(data, value, r_int=NULL, r_ext=NULL) # populate NULL value to useless pars
+                         df <- calc_coords(data, value) # populate NULL value to useless pars
                          lt <- layout(df$y)
 
                          (if(is.data.frame(lt)) mutate(df, x = lt$x, y = lt$y, hjust = if_else(y>clove, 1, 0))

@@ -58,7 +58,7 @@ df <- dplyr::tibble(
  highlight_ext = sample(c(FALSE,TRUE), n, TRUE, c(.9, .1))) |>
  dplyr::mutate(highlight_int = dplyr::if_else(lvl1 == "A",TRUE,FALSE))
 
-# Doubled donut with advanced labelling 
+# Doubled donut with advanced labeling 
 dplyr::group_by(df, lvl1, lvl2, highlight_ext, highlight_int) |>
   dplyr::summarise(value = sum(value), .groups = "drop") |>
   # Pack values effectively 
@@ -74,7 +74,7 @@ dplyr::group_by(df, lvl1, lvl2, highlight_ext, highlight_int) |>
                  layout = tv(thinner = TRUE)) +
   geom_pin(size=.5, linewidth=.1, show.legend = FALSE, cut = .25,
            layout = tv(thinner = TRUE)) +
-  # Additional appereance settings
+  # Additional appearance settings
   scale_fill_viridis_d(option = "inferno", begin = .1, end = .7) +
   theme_void() + 
   theme(legend.position = "none")  + 
