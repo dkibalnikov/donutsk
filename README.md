@@ -17,8 +17,8 @@ well-known, while also capitalizing on their ability to effectively
 represent hierarchical data structures. The following features are worth
 to be highlighted:
 
-- Create pie or donut charts while retaining ggplot flexibility, such as
-  leveraging faceting and palettes, and fine-tuning appearance
+- Create pie or donut charts while retaining ggplot2 flexibility, such
+  as leveraging faceting and palettes, and fine-tuning appearance
 - The layout functions help to streamline displaying text and labels
   *geoms* without overlapping effectively leveraging space available for
   pie and donut charts
@@ -38,6 +38,12 @@ You can install the development version of donutsk from
 ``` r
 # install.packages("devtools")
 devtools::install_github("dkibalnikov/donutsk")
+```
+
+CRAN installation:
+
+``` r
+install.packages("donutsk")
 ```
 
 ## Example

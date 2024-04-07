@@ -123,6 +123,9 @@ to the paired geom/stat.}
 
 \item{layout}{The layout function to effectively display text and labels}
 }
+\value{
+None
+}
 \description{
 The set of annotation functions utilizes layout functions to effectively distribute labels within the available space
 Annotations are streamlined by leveraging pre-calculated special variables such as \code{.sum}, \code{.mean}, and \code{.n} (see Details).

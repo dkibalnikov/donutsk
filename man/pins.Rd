@@ -101,6 +101,9 @@ Obviously it's better to have the same as for \code{geom_label_ext} or \code{geo
 
 \item{head}{Boolean - defines whether to add pin head}
 }
+\value{
+None
+}
 \description{
 The set of functions served to connect text or labels with donut segments
 \itemize{

@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 
 The Donutsk package allows you to build donut/pie charts with ggplot2 layer by layer, exploiting the advantages of polar symmetry. The package is designed to address the limitations of pie charts, which are well-known, while also capitalizing on their ability to effectively represent hierarchical data structures. The following features are worth to be highlighted:
 
-- Create pie or donut charts while retaining ggplot flexibility, such as leveraging faceting and palettes, and fine-tuning appearance
+- Create pie or donut charts while retaining ggplot2 flexibility, such as leveraging faceting and palettes, and fine-tuning appearance
 - The layout functions help to streamline displaying text and labels *geoms* without overlapping effectively leveraging space available for pie and donut charts
 - The `packing()` function arranges data to distribute small values further apart from each other
 - The set of annotation functions utilizes layout functions to effectively distribute labels within the available space 
@@ -36,6 +36,12 @@ You can install the development version of donutsk from [GitHub](https://github.
 ``` r
 # install.packages("devtools")
 devtools::install_github("dkibalnikov/donutsk")
+```
+
+CRAN installation: 
+
+``` r
+install.packages("donutsk")
 ```
 
 ## Example

@@ -48,6 +48,7 @@ use_github_action("check-standard") # Add badge R CMD check status
 use_github_action("test-coverage")
 use_news_md() # Add news
 use_cran_comments()
+use_release_issue()
 
 # Lifecycle -----------------------------------------------------------------------------------------------------------------------------------------------
 use_coverage() # reports test coverage

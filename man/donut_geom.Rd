@@ -114,6 +114,9 @@ to the paired geom/stat.}
 
 \item{hl_col}{Sets the color for highlighted segments. It's possible to use both simultaneously \code{hl_col} and generic \code{colour}}
 }
+\value{
+None
+}
 \description{
 Create pie or donut charts while retaining ggplot flexibility, such as leveraging faceting and palettes, and fine-tuning appearance
 \itemize{

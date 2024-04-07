@@ -15,6 +15,7 @@
 #'
 #' @seealso [layouts], [donut_label]
 #'
+#' @return None
 #' @name pins
 NULL
 #> NULL

@@ -15,6 +15,7 @@
 #' @param hl_shift Sets the spacing to show highlighted segments
 #' @param hl_col Sets the color for highlighted segments. It's possible to use both simultaneously `hl_col` and generic `colour`
 #'
+#' @return None
 #' @name donut_geom
 NULL
 #> NULL
