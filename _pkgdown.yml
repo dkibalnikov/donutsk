@@ -1,7 +1,7 @@
 url: https://dkibalnikov.github.io/donutsk/
 template:
   bootstrap: 5
-  bootswatch: pulse
+  # bootswatch: pulse
   bslib:
     pkgdown-nav-height: 100px
     primary: "#33264D"
