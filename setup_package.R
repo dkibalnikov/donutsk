@@ -49,6 +49,7 @@ use_github_action("test-coverage")
 use_news_md() # Add news
 use_cran_comments()
 use_release_issue()
+submit_cran()
 
 # Lifecycle -----------------------------------------------------------------------------------------------------------------------------------------------
 use_coverage() # reports test coverage

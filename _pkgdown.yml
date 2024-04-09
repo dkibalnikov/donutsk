@@ -5,4 +5,5 @@ template:
   bslib:
     pkgdown-nav-height: 100px
     primary: "#33264D"
+    navbar-light-color: "#33264D"
 
