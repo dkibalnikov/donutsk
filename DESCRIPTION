@@ -1,5 +1,5 @@
 Package: donutsk
-Title: Construct advanced donut charts
+Title: Construct Advanced Donut Charts
 Version: 0.1.0
 Authors@R: 
     person("Dmitry", "Kibalnikov", , "d.kibalnikov@gmail.com", role = c("aut", "cre", "cph"))
