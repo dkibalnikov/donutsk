@@ -57,7 +57,7 @@ eye(scale_x = 2, bend_x = 1, alpha = 90, clove = 0.5)
 Pick up value from degree interval (0, 180)}
 
 \item{clove}{Determines the distribution proportion between the left and right-hand parts.
-Default value is 0.5. There ahould be numeric value from interval (0, 1)
+Default value is 0.5. There should be numeric value from interval (0, 1)
 e.g. 0.4 denotes 40\% cases on the right hand and 60\% cases on the left hand}
 }
 \value{

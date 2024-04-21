@@ -4,7 +4,7 @@
 \name{donutsk-package}
 \alias{donutsk}
 \alias{donutsk-package}
-\title{donutsk: Construct advanced donut charts}
+\title{donutsk: Construct Advanced Donut Charts}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 

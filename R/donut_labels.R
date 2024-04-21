@@ -138,7 +138,7 @@ StatLabelExt <- ggproto("StatLabelExt", Stat,
                           df <- calc_coords(data, value) # populate NULL value to useless pars
                           lt <- layout(df$y)
 
-                          (if(is.data.frame(lt)) mutate(df, x = lt$x, y = lt$y, hjust = if_else(y>clove, 1, 0))
+                          (if(is.data.frame(lt)) mutate(df, x = lt$x, y = lt$y, hjust = if_else(lt$clove, 0, 1))
                             else mutate(df, x = lt)) |>
                             mutate(.prc = value/sum(value)) |>
                             group_by(group) |>

@@ -124,7 +124,7 @@ circle <- function(r=2.5, thinner = FALSE, thinner_gap = .1){
 #' @param alpha Defines the angle of distribution in horizontal perspective.
 #' Pick up value from degree interval (0, 180)
 #' @param clove Determines the distribution proportion between the left and right-hand parts.
-#' Default value is 0.5. There ahould be numeric value from interval (0, 1)
+#' Default value is 0.5. There should be numeric value from interval (0, 1)
 #' e.g. 0.4 denotes 40% cases on the right hand and 60% cases on the left hand
 #'
 #' @rdname layouts
@@ -134,7 +134,6 @@ eye <- function(scale_x = 2, bend_x = 1, alpha = 90, clove = .5){
   force(bend_x)
   force(alpha)
   force(clove)
-  clove <<- clove # push to parent env to reuse for hjust alignment in donut_label
 
   function(theta){
     n_right <- length(theta[theta <= clove])
@@ -142,9 +141,10 @@ eye <- function(scale_x = 2, bend_x = 1, alpha = 90, clove = .5){
 
     theta_right <- seq(from = 0.25 - alpha/180/2/2, to=0.25 + alpha/180/2/2, length.out = n_right)
     theta_left <- seq(from = 0.75 - alpha/180/2/2, to=0.75 + alpha/180/2/2, length.out = n_left)
-    y <- c(theta_right, theta_left)
+    y = c(theta_right, theta_left)
 
     tibble(x = bend_x + scale_x*sqrt((tan(2*pi*y+pi/2))^2+1),
-           y)
+           y = y,
+           clove = c(rep(TRUE, n_right), rep(FALSE, n_left)))
   }
 }
